@@ -65,7 +65,7 @@ employees.delete('id', 1337)
 ### Create new table
 ```Python
 from variables import *
-table = sql.create_table("customers",
+table = database.create_table("customers",
             Column("firstname", TEXT, not_null=True),
             Column("lastname", TEXT, not_null=True),
             Column("email", TEXT, not_null=True, unique=True),
