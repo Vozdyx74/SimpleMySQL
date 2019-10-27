@@ -1,5 +1,4 @@
 TEXT = "text"
-INTEGER = "iteger"
 REAL = "real"
 NONE = "null"
 NUMERIC = "numeric"
