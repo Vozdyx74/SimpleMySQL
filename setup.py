@@ -5,7 +5,7 @@ with open('requirements.txt') as f:
     requirements = f.read().splitlines()
 
 setup(
-    name='bin',
+    name='SimpleMySQL',
     version='0.0.1',
     description='A wrapper for MySQL to keep your code free from SQL.',
     long_description='content will follow',
