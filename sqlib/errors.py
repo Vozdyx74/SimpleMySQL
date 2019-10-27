@@ -1,27 +1,35 @@
 class SimpleMySQLError(Exception):
-    """ Base exception class for SimpleMySQL """
+	""" Base exception class for SimpleMySQL """
 
-    pass
+	pass
+
+
+class MissingUserError(SimpleMySQLError):
+	""" Exception that's thrown when missing required positional argument 'user' """
+	
+	def __init__(self):
+		message = "Missing required positional argument 'user'. Please specify this argument!"
+		super(MissingUserError, self).__init__(message)
 
 
 class AffinityNotFoundError(SimpleMySQLError):
-    """ Exception that's thrown when a non-existing MySQL affinity is given. """
+	""" Exception that's thrown when a non-existing MySQL affinity is given. """
 
-    def __init__(self):
-        message = 'Given affinity not found. Use the ones from "variables.py"!'
-        super(AffinityNotFoundError, self).__init__(message)
+	def __init__(self):
+		message = 'Given affinity not found. Use the ones from "variables.py"!'
+		super(AffinityNotFoundError, self).__init__(message)
 
 
 class DefaultValueError(SimpleMySQLError):
-    """ Exception that's thrown when the default value of a column does not match the affinity. """
+	""" Exception that's thrown when the default value of a column does not match the affinity. """
 
-    def __init__(self):
-        message = 'Default value does not match the affinity of the column.'
-        super(DefaultValueError, self).__init__(message)
+	def __init__(self):
+		message = 'Default value does not match the affinity of the column.'
+		super(DefaultValueError, self).__init__(message)
 
 
 class DatabaseError(SimpleMySQLError):
-    """ Exception that's thrown when an operation is in conflict with the MySQL database. """
+	""" Exception that's thrown when an operation is in conflict with the MySQL database. """
 
-    def __init__(self, message):
-        super(DatabaseError, self).__init__(message)
+	def __init__(self, message):
+		super(DatabaseError, self).__init__(message)
