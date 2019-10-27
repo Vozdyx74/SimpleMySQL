@@ -2,8 +2,8 @@ from .variables import *
 from . import errors
 
 
-class Column:
-    """ Represents an sqlite3 column."""
+class Column(object):
+    """ Represents an MySQL column."""
 
     def __init__(self, name: str, affinity: str, not_null=False, primary_key=False, unique=False, default=None):
         self.name = name
