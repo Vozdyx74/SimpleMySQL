@@ -1,6 +1,5 @@
 from .column import Column
 from . import tools
-from .variables import CONFIG
 from .errors import DatabaseError
 import logging
 

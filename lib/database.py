@@ -6,7 +6,7 @@ import mysql.connector
 
 class DBConnection(object):
 	
-	def __init__(self, host = ' ', user = None, passwd = ' ', database = None):
+	def __init__(self, host: str= ' ', user: str= None, passwd: str= ' ', database: str= None):
 		if not user:
 			raise MissingUserError
 		self.host = host
@@ -30,7 +30,15 @@ class DBConnection(object):
 	@classmethod
 	def create_table(self, name: str, *columns: Column):
 		conn, cursor = __get_connection()
-		cursor.execute(get_table_create_string(name, *columns))
-		conn.close()
+		try:
+			cursor.execute(get_table_create_string(name, *columns))
+			conn.close()
+		except Exception as e:
+			conn.close()
+			raise e
 		
+		return Table(name, db= self)
+
+	@classmethod
+	def get_table(self, name: str):
 		return Table(name, db= self)

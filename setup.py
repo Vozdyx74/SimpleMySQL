@@ -1,5 +1,9 @@
 from setuptools import setup, find_packages
 
+requirements = []
+with open('requirements.txt') as f:
+    requirements = f.read().splitlines()
+
 setup(
     name='SimpleMySQL',
     version='0.0.1',
@@ -11,8 +15,8 @@ setup(
     classifiers=[
         'Programming Language :: Python :: 3.7'
     ],
-    keywords='MySQL sql database wrapper',
-    install_requires=[],
+    keywords='simple mysql sql database wrapper',
+    install_requires=requirements,
     packages=find_packages(),
     data_files=None
 )
