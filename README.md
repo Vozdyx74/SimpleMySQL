@@ -1,24 +1,24 @@
-# Sqlib
+# SimpleMySQL
 
-Sqlib is a wrapper for a simple handling of sqlite3 databases, so you don't have to use sqlite statements anymore.
+SimpleMySQL is a wrapper for a simple handling of MySQL databases, so you don't have to use MySQL statements anymore.
 You can easily handle your database by instances of the tables.
 
-Sqlib doesn't provide full sqlite possibilities and it can only be used for one database.
+SimpleMySQL doesn't provide full MySQL possibilities and it can only be used for one database.
 
 ## Examples
 
 ### Frame
 ```Python
-from sqlib import *
+import simple_mysql as sql
 
-connect("company.db")  # set db file (default is ':memory:')
+database = sql.connect(host = "localhost", user = 'root', passwd = 'yourpassword', database = 'test')  # set login information
 
-employees = Table('employees')  # create an instance for your table
+employees = database.create_table('employees')  # create an instance for your table
 ```
 
 ### Insert
 ```Python
-employees.insert({'firstname': 'Linus', 'lastname': 'Bartsch'})  # manage the data easy without sqlite
+employees.insert({'firstname': 'Linus', 'lastname': 'Bartsch'})  # manage the data easy without MySQL query
 ```
 
 ### Get
