@@ -11,7 +11,10 @@ SimpleMySQL doesn't provide full MySQL possibilities and it can only be used for
 ```Python
 import simple_mysql as sql
 
-database = sql.connect(host = "localhost", user = 'root', passwd = 'yourpassword', database = 'test')  # set login information
+database = sql.connect(host = "localhost",  # set login information
+                       user = 'root',
+                       passwd = 'yourpassword',
+                       database = 'test')
 
 employees = database.create_table('employees')  # create an instance for your table
 ```
