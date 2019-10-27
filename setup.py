@@ -11,7 +11,7 @@ setup(
     classifiers=[
         'Programming Language :: Python :: 3.7'
     ],
-    keywords='mysql MySQL sql database wrapper',
+    keywords='MySQL sql database wrapper',
     install_requires=[],
     packages=find_packages(),
     data_files=None
