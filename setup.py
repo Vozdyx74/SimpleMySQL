@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='MySQLib',
+    name='SimpleMySQL',
     version='0.0.1',
     description='A wrapper for MySQL to keep your code free from SQL.',
     long_description='content will follow',
