@@ -4,7 +4,7 @@ from .table import Table
 from .tools import get_table_create_string
 import mysql.connector
 
-class DBConnection(object):
+class DBConnection:
 	
 	def __init__(self, host: str= 'localhost', user: str= None, passwd: str= ' ', database: str= None):
 		if not user:
@@ -13,11 +13,8 @@ class DBConnection(object):
 		self.user = user
 		self.passwd = passwd
 		self.database = database
-		c, cu = self.__get_connection()
-		c.close()
 	
-	@classmethod
-	def __get_connection(self):
+	def _get_connection(self):
 		conn = mysql.connector.connect(
 			host = self.host,
 			user = self.user,
@@ -26,10 +23,9 @@ class DBConnection(object):
 		cursor = conn.cursor()
 		
 		return conn, cursor
-	
-	@classmethod
+
 	def create_table(self, name: str, *columns: Column):
-		conn, cursor = __get_connection()
+		conn, cursor = self._get_connection()
 		try:
 			cursor.execute(get_table_create_string(name, *columns))
 			conn.close()
@@ -39,6 +35,6 @@ class DBConnection(object):
 		
 		return Table(name, db= self)
 
-	@classmethod
+
 	def get_table(self, name: str):
 		return Table(name, db= self)

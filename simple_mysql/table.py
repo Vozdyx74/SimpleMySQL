@@ -8,16 +8,18 @@ logger.setLevel(logging.INFO)
 logger.addHandler(logging.StreamHandler())
 
 
-class Table(object):
+class Table:
 	""" Represents an MySQL table. """
 	def __init__(self, name, db):
+
 		self._name = None
 		self.name = name
 
 		self._db = db
-		conn, cursor = self._db.__get_connection()
+
+		conn, cursor = self._db._get_connection()
 		try:
-			cursor.execute(f"PRAGMA TABLE_INFO ({self.name})")
+			cursor.execute(f"DESCRIBE {self.name}")
 			table_info = cursor.fetchall()
 			conn.close()
 		except Exception as e:
@@ -28,7 +30,7 @@ class Table(object):
 			raise DatabaseError(f"Given table (\"{name}\") doesn't exist.")
 
 		self._columns = list(map(
-			lambda x: Column(x[1], x[2], not_null=tools.bit_to_bool(x[3]), default=x[4], primary_key=tools.bit_to_bool(x[5])),
+			lambda x: Column(x[0], x[1], not_null=tools.bit_to_bool(x[2]), default=x[3], primary_key=tools.bit_to_bool(x[4])),
 			table_info
 			))
 
@@ -55,7 +57,7 @@ class Table(object):
 		else:
 			selection = only_column
 
-		conn, cursor = self._db.__get_connection()
+		conn, cursor = self._db._get_connection()
 		try:
 			cursor.execute(f"SELECT {selection} FROM {self.name} WHERE {column}=:value", {"value": value})
 	
@@ -81,7 +83,7 @@ class Table(object):
 		else:
 			selection = only_column
 
-		conn, cursor = self._db.__get_connection()
+		conn, cursor = self._db._get_connection()
 		try:
 			cursor.execute(f"SELECT {selection} FROM {self.name}")
 
@@ -101,7 +103,7 @@ class Table(object):
 
 		cols_str = tools.concat(cols)
 
-		conn, cursor = self._db.__get_connection()
+		conn, cursor = self._db._get_connection()
 		try:
 			if not cols:
 				logger.info("Inserting only default values.")
@@ -116,7 +118,7 @@ class Table(object):
 		return values
 
 	def update(self, column, value, new_values: dict):
-		conn, cursor = self._db.__get_connection()
+		conn, cursor = self._db._get_connection()
 		try:
 			cursor.execute(
 				"UPDATE {0} SET {1} WHERE {2}={3}".format(
@@ -135,7 +137,7 @@ class Table(object):
 		return new_values
 
 	def delete(self, column, value):
-		conn, cursor = self._db.__get_connection()
+		conn, cursor = self._db._get_connection()
 		try:
 			cursor.execute(f"DELETE FROM {self.name} WHERE {column}=:value", {'value': value})
 			conn.commit()

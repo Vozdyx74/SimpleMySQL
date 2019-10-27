@@ -24,7 +24,7 @@ class Column(object):
 
     @affinity.setter
     def affinity(self, value):
-        if value in AFFINITIES:
+        if value.replace('(18)', '') in AFFINITIES:
             self._affinity = value
         else:
             raise errors.AffinityNotFoundError
@@ -35,7 +35,9 @@ class Column(object):
 
     @default.setter
     def default(self, value):
-        if type(value) == str and self.affinity != TEXT:
+        print('1 '+value)
+        print('2 '+self.affinity)
+        if value == ' ' and self.affinity != TEXT:
             raise errors.DefaultValueError
         else:
             self._DEFAULT = value
