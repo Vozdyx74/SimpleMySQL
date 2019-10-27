@@ -1,10 +1,10 @@
-class MySQLibError(Exception):
-    """ Base exception class for MySQLib """
+class SimpleMySQLError(Exception):
+    """ Base exception class for SimpleMySQL """
 
     pass
 
 
-class AffinityNotFoundError(MySQLibError):
+class AffinityNotFoundError(SimpleMySQLError):
     """ Exception that's thrown when a non-existing MySQL affinity is given. """
 
     def __init__(self):
@@ -12,7 +12,7 @@ class AffinityNotFoundError(MySQLibError):
         super(AffinityNotFoundError, self).__init__(message)
 
 
-class DefaultValueError(MySQLibError):
+class DefaultValueError(SimpleMySQLError):
     """ Exception that's thrown when the default value of a column does not match the affinity. """
 
     def __init__(self):
@@ -20,7 +20,7 @@ class DefaultValueError(MySQLibError):
         super(DefaultValueError, self).__init__(message)
 
 
-class DatabaseError(MySQLibError):
+class DatabaseError(SimpleMySQLError):
     """ Exception that's thrown when an operation is in conflict with the MySQL database. """
 
     def __init__(self, message):
