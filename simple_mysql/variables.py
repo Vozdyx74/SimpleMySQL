@@ -1,15 +1,9 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 TEXT = "text"
 INTEGER = "iteger"
 REAL = "real"
 NONE = "null"
 NUMERIC = "numeric"
 BIGINT = "bigint"
-
-=======
->>>>>>> 5464af01429791a8dab02a43b8591b7df740ef9b
-=======
 INT = 'int'
 VARCHAR = 'varchar'
 TEXT = 'text'
@@ -50,6 +44,4 @@ MULTILINESTRING = 'multilinestring'
 MULTIPOLYGON = 'multipolygon'
 GEOMETRYCOLLECTION = 'geometrycollection'
 
-
->>>>>>> 15b6f2d3ef08ea03478ab2b9a91b4ac1b91ed5a7
 AFFINITIES = [TEXT, INTEGER, REAL, NONE, NUMERIC, BIGINT]
