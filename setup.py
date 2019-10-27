@@ -3,15 +3,15 @@ from setuptools import setup, find_packages
 setup(
     name='sqlib',
     version='0.0.1',
-    description='A wrapper for sqlite3 to keep your code free from SQL.',
+    description='A wrapper for MySQL to keep your code free from SQL.',
     long_description='content will follow',
-    url='https://github.com/LiBa001/sqlib',
-    author='Linus Bartsch',
+    url='https://github.com/Vozdyx74/MySQLib',
+    author='Vozdyx74 ,HaCsO',
     license='MIT',
     classifiers=[
-        'Programming Language :: Python :: 3.6'
+        'Programming Language :: Python :: 3.7'
     ],
-    keywords='sqlite sql database wrapper',
+    keywords='mysql MySQL sql database wrapper',
     install_requires=[],
     packages=find_packages(),
     data_files=None
