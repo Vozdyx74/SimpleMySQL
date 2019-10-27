@@ -15,7 +15,7 @@ except ImportError:
 
 logging.getLogger(__name__).addHandler(NullHandler())
 
-__author__ = 'Vozdyx74'
+__author__ = 'Vozdyx74, HaCsO'
 __title__ = 'MySQLib'
 __license__ = 'MIT'
 __version__ = '0.0.1'
