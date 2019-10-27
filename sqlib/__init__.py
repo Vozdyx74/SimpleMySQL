@@ -2,7 +2,7 @@ from .table import Table
 from .column import Column
 from .variables import *
 from .errors import *
-from .database import create_table, connect
+from .database import DBConnection
 
 import logging
 
@@ -14,6 +14,9 @@ except ImportError:
             pass
 
 logging.getLogger(__name__).addHandler(NullHandler())
+
+def connect(*args, **kwargs):
+	return DBConnection(*args, **kwargs)
 
 __author__ = 'Vozdyx74, HaCsO'
 __title__ = 'SimpleMySQL'

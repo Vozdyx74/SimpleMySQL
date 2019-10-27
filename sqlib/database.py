@@ -3,7 +3,7 @@ from .table import Table
 from .tools import get_table_create_string
 import mysql.connector
 
-class DB(object):
+class DBConnection(object):
 	
 	def __init__(self, host, user, passwd, database = None):
 		self.host = host
