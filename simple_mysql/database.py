@@ -6,7 +6,7 @@ import mysql.connector
 
 class DBConnection(object):
 	
-	def __init__(self, host: str= ' ', user: str= None, passwd: str= ' ', database: str= None):
+	def __init__(self, host: str= 'localhost', user: str= None, passwd: str= ' ', database: str= None):
 		if not user:
 			raise MissingUserError
 		self.host = host
